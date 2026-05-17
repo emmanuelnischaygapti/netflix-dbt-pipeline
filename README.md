@@ -1,4 +1,4 @@
-# Netflix DBT Masterclass Project
+# Netflix DBT Project
 
 This is a data transformation pipeline built using **dbt (Data Build Tool)** and **Snowflake**, based on the Netflix MovieLens dataset.
 
