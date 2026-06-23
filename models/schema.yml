@@ -74,3 +74,40 @@ models:
         description: Relevance score (0 to 1) for tag's association with movie
         tests:
           - not_null
+
+  - name: mart_top_rated_movies
+    description: Aggregated movie ratings, filtered to movies with at least 50 ratings
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+      - name: avg_rating
+        description: Average user rating for the movie
+        tests:
+          - not_null
+      - name: rating_count
+        description: Total number of ratings received
+
+  - name: mart_user_activity
+    description: Per-user rating activity summary for segmentation and churn analysis
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+      - name: total_ratings
+        description: Total number of ratings submitted by the user
+      - name: active_days_span
+        description: Days between first and last rating event
+
+  - name: mart_genre_popularity
+    description: Aggregated rating stats per genre for content strategy dashboards
+    columns:
+      - name: genre
+        tests:
+          - not_null
+          - unique
+      - name: total_ratings
+        description: Total ratings across all movies in this genre
+      - name: avg_rating
+        description: Average rating across all movies in this genre
