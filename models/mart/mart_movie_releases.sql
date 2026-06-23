@@ -7,8 +7,9 @@ seed_dates AS (
     SELECT * FROM {{ ref('seed_movie_release_dates') }}
 )
 
-SELECT 
+SELECT
     f.*,
+    d.release_date,
     CASE
         WHEN d.release_date IS NULL THEN 'unknown'
         ELSE 'known'
